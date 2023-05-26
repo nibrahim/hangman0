@@ -13,6 +13,14 @@ def test_select_random_word_no_capitals():
     assert secret_word.islower()
 
 
+def test_select_random_word_no_repetitions():
+    secret_words = set()
+    for _ in range(10):
+        secret_words.add(hangman.get_random_word())
+    assert len(secret_words) == 10
+    
+
+
 
 
 
