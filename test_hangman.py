@@ -1,8 +1,20 @@
+import os
+import tempfile
+
 import hangman
 
 def test_select_random_word_min_length():
-    secret_word = hangman.get_random_word()
-    assert len(secret_word) >= 6
+    # create temporary file
+    name = tempfile.mktemp()
+    f = open(name, "w")
+    f.writelines(["cat\n","elephant\n","mouse\n","dog\n"])
+    f.close()
+
+    for _ in range(20):
+        secret_word = hangman.get_random_word(name)
+        assert secret_word == "elephant"
+
+    os.unlink(name)
 
 def test_select_random_word_no_non_alpha_chars():
     secret_word = hangman.get_random_word()

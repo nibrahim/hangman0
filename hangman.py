@@ -1,9 +1,9 @@
 import random
 
 
-def get_random_word():
+def get_random_word(wordfile = "/usr/share/dict/words"):
     candidate_words = []
-    with open("/usr/share/dict/words") as f:
+    with open(wordfile) as f:
         for word in f:
             word = word.strip()
             if len(word) >= 6 and word.islower() and word.isalpha():
