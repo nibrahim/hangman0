@@ -30,8 +30,17 @@ def test_select_random_word_no_non_alpha_chars():
     os.unlink(name)
 
 def test_select_random_word_no_capitals():
-    secret_word = hangman.get_random_word()
-    assert secret_word.islower()
+    # create temporary file
+    name = tempfile.mktemp()
+    f = open(name, "w")
+    f.writelines(["Alexander\n","AMD\n","California\n","pelican\n"])
+    f.close()
+
+    for _ in range(20):
+        secret_word = hangman.get_random_word(name)
+        assert secret_word == "pelican"
+
+    os.unlink(name)
 
 
 def test_select_random_word_no_repetitions():
