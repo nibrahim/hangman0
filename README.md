@@ -20,4 +20,7 @@ fancy ascii graphics.
       - No capitals
 
 
-       
+## Virtualenv
+   virtualenv -p /tmp/hangman
+   . /tmp/hangman/bin/activate
+   pip install -r requirements.txt
